@@ -290,6 +290,34 @@
                 font-size: 1rem;
             }
         }
+
+        #statistics-table {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        #statistics-table h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        #statistics-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        #statistics-table th,
+        #statistics-table td {
+            border: 1px solid var(--dark);
+            padding: 0.5rem;
+            text-align: center;
+        }
+
+        #statistics-table th {
+            background-color: var(--light);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -301,13 +329,13 @@
             </a>
             <div class="banner">Казино и раздачи</div>
         </div>
-        
+
         <button class="mobile-menu-btn" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </button>
 
         <nav id="mainNav">
-            <a href="#" class="nav-link">Статистика <i class="fas fa-chart-line"></i></a>
+            <a href="#" id="statisticsLink" class="nav-link">Статистика <i class="fas fa-chart-line"></i></a>
             <a href="#" class="nav-link">Акции <i class="fas fa-gift"></i></a>
             <a href="#" class="nav-link">Сотрудничество <i class="fas fa-handshake"></i></a>
         </nav>
@@ -317,6 +345,25 @@
         <section class="hero">
             <h1>Добро пожаловать в by klim</h1>
             <p>Лучшие казино игры, эксклюзивные бонусы и ежедневные раздачи подарков. Присоединяйтесь к нашему сообществу уже сегодня!</p>
+        </section>
+
+        <section id="statistics-table">
+            <h2>Статистика</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Номер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Здесь будут строки таблицы -->
+                    <?php
+                    for ($i = 1; $i <= 50; $i++) {
+                        echo "<tr><td>" . $i . "</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </section>
 
         <section class="features">
@@ -383,6 +430,20 @@
                 header.style.padding = '1rem 2rem';
                 header.style.background = 'linear-gradient(135deg, var(--primary), #34495e)';
             }
+        });
+
+        // Получаем ссылку на кнопку "Статистика"
+        const statisticsLink = document.getElementById('statisticsLink');
+
+        // Получаем элемент таблицы
+        const statisticsTable = document.getElementById('statistics-table');
+
+        // Добавляем обработчик события на клик по ссылке "Статистика"
+        statisticsLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Предотвращаем переход по ссылке
+
+            // Показываем таблицу
+            statisticsTable.style.display = 'block';
         });
     </script>
 </body>
