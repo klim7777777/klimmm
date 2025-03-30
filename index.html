@@ -355,13 +355,8 @@
                         <th>Номер</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="statisticsTableBody">
                     <!-- Здесь будут строки таблицы -->
-                    <?php
-                    for ($i = 1; $i <= 50; $i++) {
-                        echo "<tr><td>" . $i . "</td></tr>";
-                    }
-                    ?>
                 </tbody>
             </table>
         </section>
@@ -437,6 +432,8 @@
 
         // Получаем элемент таблицы
         const statisticsTable = document.getElementById('statistics-table');
+                const statisticsTableBody = document.getElementById('statisticsTableBody');
+
 
         // Добавляем обработчик события на клик по ссылке "Статистика"
         statisticsLink.addEventListener('click', function(event) {
@@ -444,6 +441,15 @@
 
             // Показываем таблицу
             statisticsTable.style.display = 'block';
+
+             // Создаем строки таблицы
+            for (let i = 1; i <= 50; i++) {
+                const row = document.createElement('tr');
+                const cell = document.createElement('td');
+                cell.textContent = i;
+                row.appendChild(cell);
+                statisticsTableBody.appendChild(row);
+            }
         });
     </script>
 </body>
